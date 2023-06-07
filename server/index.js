@@ -12,7 +12,6 @@ const io = new Server(server, {
   cors: {
     origin: 'https://chat-app-client-d6dk.onrender.com',
     methods: ['GET', 'POST'],
-    allowedHeaders: ['custom-header'],
     credentials: true,
   },
 });
