@@ -3,16 +3,7 @@ import Chat from './Chat';
 
 import io from 'socket.io-client';
 
-const socket = io.connect('https://chat-app-server-99ky.onrender.com', {
-  withCredentials: true,
-  transportOptions: {
-    polling: {
-      extraHeaders: {
-        'my-custom-header': 'CustomValue',
-      },
-    },
-  },
-});
+const socket = io.connect('https://chat-app-server-99ky.onrender.com');
 
 function App() {
   const [username, setUsername] = useState('');

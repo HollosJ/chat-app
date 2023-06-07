@@ -10,9 +10,7 @@ let server = http.createServer(app);
 
 const io = new Server(server, {
   cors: {
-    origin: 'https://chat-app-client-d6dk.onrender.com',
-    methods: ['GET', 'POST'],
-    credentials: true,
+    origin: '*',
   },
 });
 
