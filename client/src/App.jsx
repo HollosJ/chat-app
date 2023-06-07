@@ -5,6 +5,13 @@ import io from 'socket.io-client';
 
 const socket = io.connect('https://chat-app-server-99ky.onrender.com', {
   withCredentials: true,
+  transportOptions: {
+    polling: {
+      extraHeaders: {
+        'my-custom-header': 'CustomValue',
+      },
+    },
+  },
 });
 
 function App() {
