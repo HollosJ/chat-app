@@ -4,16 +4,6 @@ const http = require('http');
 const cors = require('cors');
 const { Server } = require('socket.io');
 
-// Set the 'Access-Control-Allow-Origin' header manually
-app.use((req, res, next) => {
-  res.header('Access-Control-Allow-Origin', '*');
-  res.header(
-    'Access-Control-Allow-Headers',
-    'Origin, X-Requested-With, Content-Type, Accept'
-  );
-  next();
-});
-
 app.use(cors());
 
 let server = http.createServer(app);
@@ -26,6 +16,8 @@ const io = new Server(server, {
     ],
     methods: ['GET', 'POST'],
     credentials: true,
+    allowedHeaders: ['Origin', 'X-Requested-With', 'Content-Type', 'Accept'],
+    exposedHeaders: ['Access-Control-Allow-Origin'],
   },
 });
 

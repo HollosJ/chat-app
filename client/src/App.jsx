@@ -3,14 +3,21 @@ import Chat from './Chat';
 
 import io from 'socket.io-client';
 
-const socket = io.connect(
-  process.env.NODE_ENV === 'development'
-    ? 'http://localhost:3001'
-    : 'https://chat-app-server-99ky.onrender.com',
-  {
-    withCredentials: true,
-  }
-);
+// const socket = io.connect(
+//   process.env.NODE_ENV === 'development'
+//     ? 'http://localhost:3001'
+//     : 'https://chat-app-server-99ky.onrender.com',
+//   {
+//     withCredentials: true,
+//   }
+// );
+
+const socket = io.connect({
+  withCredentials: true,
+  extraHeaders: {
+    'Access-Control-Allow-Origin': 'https://chat-app-client-d6dk.onrender.com',
+  },
+});
 
 function App() {
   const [username, setUsername] = useState('');
