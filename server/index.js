@@ -4,6 +4,16 @@ const http = require('http');
 const cors = require('cors');
 const { Server } = require('socket.io');
 
+// Set the 'Access-Control-Allow-Origin' header manually
+app.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', '*');
+  res.header(
+    'Access-Control-Allow-Headers',
+    'Origin, X-Requested-With, Content-Type, Accept'
+  );
+  next();
+});
+
 app.use(cors());
 
 let server = http.createServer(app);
@@ -34,16 +44,6 @@ io.on('connection', (socket) => {
   socket.on('disconnect', () => {
     console.log(socket.id, 'disconnected from the server');
   });
-});
-
-// Set the 'Access-Control-Allow-Origin' header manually
-app.use((req, res, next) => {
-  res.header('Access-Control-Allow-Origin', '*');
-  res.header(
-    'Access-Control-Allow-Headers',
-    'Origin, X-Requested-With, Content-Type, Accept'
-  );
-  next();
 });
 
 server.listen(process.env.PORT || 3001, () => {
