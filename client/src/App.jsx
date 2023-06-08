@@ -12,8 +12,6 @@ const socket = io.connect(
   }
 );
 
-console.log();
-
 function App() {
   const [username, setUsername] = useState('');
   const [roomID, setRoomID] = useState(null);

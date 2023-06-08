@@ -12,7 +12,7 @@ const io = new Server(server, {
   cors: {
     origin: [
       'http://127.0.0.1:5173',
-      'https://chat-app-client-d6dk.onrender.com/',
+      'https://chat-app-client-d6dk.onrender.com',
     ],
     methods: ['GET', 'POST'],
     credentials: true,
