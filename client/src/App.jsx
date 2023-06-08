@@ -1,9 +1,18 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import Chat from './Chat';
 
 import io from 'socket.io-client';
 
-const socket = io.connect('https://chat-app-server-99ky.onrender.com');
+const socket = io.connect(
+  process.env.NODE_ENV === 'development'
+    ? 'http://localhost:3001'
+    : 'https://chat-app-server-99ky.onrender.com',
+  {
+    withCredentials: true,
+  }
+);
+
+console.log();
 
 function App() {
   const [username, setUsername] = useState('');
